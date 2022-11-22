@@ -48,7 +48,7 @@ jobs:
         resourceGroupName: 'pipeline-rg'
         location: 'westeurope'
         templateFilePath: './tl-platform-building-blocks/ArmTemplates/app-service.json'
-        processOutputs: true
+        processOutputs: false
         tags: '@{}'
         armParameterOverrideString: 
           '-appServiceName "pipeline-app-01"
