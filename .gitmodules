@@ -4,3 +4,4 @@
 [submodule "tl-platform-building-blocks"]
 	path = tl-platform-building-blocks
 	url = https://github.com/SkillsFundingAgency/tl-platform-building-blocks.git
+	branch = feature/single-repo

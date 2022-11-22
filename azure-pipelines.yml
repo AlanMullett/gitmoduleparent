@@ -33,9 +33,23 @@ steps:
     tags: '@{}'
     armParameterOverrideString: 
       '-appServicePlanName "pipeline-asp-01"
-      -aspLocation "West Europe"
-      -aspSize 1
-      -aspInstances 1
-      -nonASETier "Basic"'
+       -aspLocation "West Europe"
+       -aspSize 1
+       -aspInstances 1
+       -nonASETier "Basic"'
 
-    
+- template: ./PipelineTemplates/deploy-template.yml@tlpbb
+  parameters:
+    serviceConnection: 'Visual Studio Enterprise'
+    subscriptionId: 'c6dfe75e-f5b6-4a81-952d-e0f6eadb4558'
+    resourceGroupName: 'pipeline-rg'
+    location: 'westeurope'
+    templateFilePath: './tl-platform-building-blocks/ArmTemplates/app-service.json'
+    processOutputs: true
+    tags: '@{}'
+    armParameterOverrideString: 
+      '-appServiceName "pipeline-app-01"
+       -appServicePlanName "pipeline-asp-01"
+       -appServicePlanResourceGroup "pipeline-rg"'
+       
+
