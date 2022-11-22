@@ -12,7 +12,7 @@ pool:
 
 steps:
 - checkout: self
-  submodules: recursive
+  #submodules: recursive
 
 - script: echo Hello, world!
   displayName: 'Run a one-line script'
