@@ -30,7 +30,7 @@ steps:
     location: 'westeurope'
     templateFilePath: './tl-platform-building-blocks/ArmTemplates/app-service-plan-ase.json'
     processOutputs: true
-    tags: ""
+    tags: @{}
     armParameterOverrideString: 
       '-appServicePlanName "pipeline-asp-01"
       -aspLocation "West Europe"
