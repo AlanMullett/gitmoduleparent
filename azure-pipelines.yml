@@ -3,8 +3,6 @@
 resources:
   repositories:
     - repository: self
-      persistCredentials: true
-      clean: true
 
 trigger:
 - master
@@ -13,6 +11,9 @@ pool:
   vmImage: ubuntu-latest
 
 steps:
+- checkout: self
+  submodules: recursive
+
 - script: echo Hello, world!
   displayName: 'Run a one-line script'
 
