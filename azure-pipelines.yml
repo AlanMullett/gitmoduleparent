@@ -33,7 +33,7 @@ jobs:
           -aspLocation "West Europe"
           -aspSize 1
           -aspInstances 1
-          -nonASETier "Basic"'
+          -nonASETier "Standard"'
 
   - job: DeployAppService
     pool:
