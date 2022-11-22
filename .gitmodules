@@ -1,0 +1,3 @@
+[submodule "gitmodulechild"]
+	path = gitmodulechild
+	url = https://github.com/AlanMullett/gitmodulechild.git
