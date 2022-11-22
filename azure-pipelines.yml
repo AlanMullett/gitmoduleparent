@@ -19,5 +19,5 @@ steps:
     echo See https://aka.ms/yaml
   displayName: 'Run a multi-line script'
 
-- script: ls -al
-  displayName: 'Do a directory listing'
+- script: ls -lR
+  displayName: 'Do a recursive directory listing'
