@@ -27,7 +27,7 @@ steps:
     serviceConnection: 'Visual Studio Enterprise'
     subscriptionId: 'c6dfe75e-f5b6-4a81-952d-e0f6eadb4558'
     resourceGroupName: 'pipeline-rg'
-    location: 'West Europe'
+    location: 'westeurope'
     templateFilePath: './tl-platform-building-blocks/ArmTemplates/app-service-plan-ase.json'
     processOutputs: true
     armParameterOverrideString: 
