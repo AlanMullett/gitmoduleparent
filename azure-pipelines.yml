@@ -3,6 +3,9 @@
 resources:
   repositories:
     - repository: self
+    - repository: tlpbb
+      type: github
+      name: SkillsFundingAgency/tl-platform-building-blocks
 
 trigger:
 - master
@@ -17,7 +20,7 @@ steps:
 - script: ls -lR
   displayName: 'Do a recursive directory listing'
 
-- template: './tl-platform-building-blocks/PipelineTemplates/deploy-template.yml'
+- template: ./PipelineTemplates/deploy-template.yml@tlpbb
   parameters: 
     serviceConnection: 'Visual Studio Enterprise'
     subscriptionId: 'c6dfe75e-f5b6-4a81-952d-e0f6eadb4558'
