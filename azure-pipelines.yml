@@ -5,6 +5,7 @@ resources:
     - repository: self
     - repository: tlpbb
       type: github
+      endpoint: SkillsFundingAgency
       name: SkillsFundingAgency/tl-platform-building-blocks
 
 trigger:
