@@ -55,4 +55,23 @@ jobs:
           -appServicePlanName "pipeline-asp-01"
           -appServicePlanResourceGroup "pipeline-rg"'
        
-
+  - job: DeployFunctionApp
+    pool:
+      vmImage: ubuntu-latest
+    steps:
+    - checkout: self
+      submodules: recursive      
+    - template: ./PipelineTemplates/deploy-template.yml@tlpbb
+      parameters:
+        serviceConnection: 'Visual Studio Enterprise'
+        subscriptionId: 'c6dfe75e-f5b6-4a81-952d-e0f6eadb4558'
+        resourceGroupName: 'pipeline-rg'
+        location: 'westeurope'
+        templateFilePath: './tl-platform-building-blocks/ArmTemplates/function-app.json'
+        processOutputs: false
+        tags: '@{}'
+        armParameterOverrideString: 
+          '-functionAppName "pipeline-func-01"
+          -appServicePlanName "pipeline-asp-01"
+          -appServicePlanResourceGroup "pipeline-rg"'
+      
