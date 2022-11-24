@@ -5,3 +5,6 @@
 	path = tl-platform-building-blocks
 	url = https://github.com/SkillsFundingAgency/tl-platform-building-blocks.git
 	branch = feature/single-repo
+[submodule "funding-platform-building-blocks"]
+	path = funding-platform-building-blocks
+	url = https://github.com/SkillsFundingAgency/funding-platform-building-blocks.git
