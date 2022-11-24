@@ -36,3 +36,6 @@ module function_app '../../tl-platform-building-blocks/ArmTemplates/function-app
     app_service_plan
   ]
 }
+
+output appServiceIdentity string = app_service.outputs.ManagedServiceIdentityId
+output functionAppIdentity string = function_app.outputs.ManagedServiceIdentityId
