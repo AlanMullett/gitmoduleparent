@@ -38,4 +38,4 @@ module function_app '../../tl-platform-building-blocks/ArmTemplates/function-app
 }
 
 output appServiceIdentity string = app_service.outputs.ManagedServiceIdentityId
-output functionAppIdentity string = contains(function_app.outputs,'ManagedServiceIdentityId')?function_app.outputs.ManagedServiceIdentityId:''
+output functionAppIdentity string = contains(function_app.outputs,'ManagedServiceIdentityId')?'identity':'no-identity'
