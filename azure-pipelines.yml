@@ -26,5 +26,5 @@ jobs:
         resourceGroupName: 'pipeline-rg'
         location: 'westeurope'
         templateFilePath: './platform/azure/template.bicep'
-        processOutputs: true
+        processOutputs: false
         tags: '@{}'
