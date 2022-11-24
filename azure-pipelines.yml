@@ -25,53 +25,6 @@ jobs:
         subscriptionId: 'c6dfe75e-f5b6-4a81-952d-e0f6eadb4558'
         resourceGroupName: 'pipeline-rg'
         location: 'westeurope'
-        templateFilePath: './tl-platform-building-blocks/ArmTemplates/app-service-plan-ase.json'
+        templateFilePath: './platform/template.bicep'
         processOutputs: true
         tags: '@{}'
-        armParameterOverrideString: 
-          '-appServicePlanName "pipeline-asp-01"
-          -aspLocation "West Europe"
-          -aspSize 1
-          -aspInstances 1
-          -nonASETier "Standard"'
-
-  - job: DeployAppService
-    pool:
-      vmImage: ubuntu-latest
-    steps:
-    - checkout: self
-      submodules: recursive      
-    - template: ./PipelineTemplates/deploy-template.yml@tlpbb
-      parameters:
-        serviceConnection: 'Visual Studio Enterprise'
-        subscriptionId: 'c6dfe75e-f5b6-4a81-952d-e0f6eadb4558'
-        resourceGroupName: 'pipeline-rg'
-        location: 'westeurope'
-        templateFilePath: './tl-platform-building-blocks/ArmTemplates/app-service.json'
-        processOutputs: true
-        tags: '@{}'
-        armParameterOverrideString: 
-          '-appServiceName "pipeline-app-01"
-          -appServicePlanName "pipeline-asp-01"
-          -appServicePlanResourceGroup "pipeline-rg"'
-       
-  - job: DeployFunctionApp
-    pool:
-      vmImage: ubuntu-latest
-    steps:
-    - checkout: self
-      submodules: recursive      
-    - template: ./PipelineTemplates/deploy-template.yml@tlpbb
-      parameters:
-        serviceConnection: 'Visual Studio Enterprise'
-        subscriptionId: 'c6dfe75e-f5b6-4a81-952d-e0f6eadb4558'
-        resourceGroupName: 'pipeline-rg'
-        location: 'westeurope'
-        templateFilePath: './tl-platform-building-blocks/ArmTemplates/function-app.json'
-        processOutputs: true
-        tags: '@{}'
-        armParameterOverrideString: 
-          '-functionAppName "pipeline-func-01"
-          -appServicePlanName "pipeline-asp-01"
-          -appServicePlanResourceGroup "pipeline-rg"'
-      
