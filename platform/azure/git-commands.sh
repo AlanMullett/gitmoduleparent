@@ -7,3 +7,5 @@ git submodule update --remote
 
 git clone --recurse-submodules https://github.com/AlanMullett/gitmoduleparent.git 
 
+#to set the commit used in the submodule, all of these will resolve and record the commit used rather than keeping the source tag/branch
+git checkout [commit|tag|branch]
