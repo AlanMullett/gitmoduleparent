@@ -1,15 +1,15 @@
-param resourceGroupPrefix string 
+param sharedResourceGroupPrefix string 
 
 var tags = {
-  environmentTag: '${resourceGroupPrefix}-environment'
-  parentBusinessTag: '${resourceGroupPrefix}-business'
-  portfolioTag: '${resourceGroupPrefix}-portfolio'
-  productTag: '${resourceGroupPrefix}-product'
-  serviceLineTag: '${resourceGroupPrefix}-serviceLine'
-  serviceOfferingTag: '${resourceGroupPrefix}-serviceOffering'
+  environmentTag: '${sharedResourceGroupPrefix}-environment'
+  parentBusinessTag: '${sharedResourceGroupPrefix}-business'
+  portfolioTag: '${sharedResourceGroupPrefix}-portfolio'
+  productTag: '${sharedResourceGroupPrefix}-product'
+  serviceLineTag: '${sharedResourceGroupPrefix}-serviceLine'
+  serviceOfferingTag: '${sharedResourceGroupPrefix}-serviceOffering'
 }
 
-var keyVaultName = '${resourceGroupPrefix}-kv-01'
+var keyVaultName = '${sharedResourceGroupPrefix}-kv-01'
 
 module sharedKeyVault '../../funding-platform-building-blocks/templates/keyvault.json' = {
   name: 'sharedKeyVault'
@@ -27,4 +27,3 @@ module sharedKeyVault '../../funding-platform-building-blocks/templates/keyvault
 }
 
 output keyVaultName string = keyVaultName
-
