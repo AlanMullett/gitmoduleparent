@@ -9,7 +9,7 @@ var tags = {
   serviceOfferingTag: '${resourceGroupPrefix}-serviceOffering'
 }
 
-var keyVaultName = '$(resourceGroupPrefix)-kv-01'
+var keyVaultName = '${resourceGroupPrefix}-kv-01'
 module sharedKeyVault '../../funding-platform-building-blocks/templates/keyvault.json' = {
   name: 'sharedKeyVault'
   params: {
