@@ -1,5 +1,3 @@
-# initial template to try out submodule consumption
-
 resources:
   repositories:
     - repository: self
@@ -12,20 +10,43 @@ resources:
 trigger:
 - master
 
-jobs:
-  - job: DeployInfrastructure
-    pool:
-      vmImage: ubuntu-latest
-    steps:
-    - checkout: self
-      submodules: recursive
-    - template: ./PipelineTemplates/deploy-template.yml@tlpbb
-      parameters: 
-        serviceConnection: 'Visual Studio Enterprise'
-        subscriptionId: 'c6dfe75e-f5b6-4a81-952d-e0f6eadb4558'
-        resourceGroupName: '$(resourceGroupPrefix)-rg'
-        location: 'westeurope'
-        templateFilePath: './platform/azure/template.bicep'
-        processOutputs: false
-        tags: '@{}'
-        armParameterOverrideString: '-resourceGroupPrefix $(resourceGroupPrefix)'
+stages:
+  - stage:
+    displayName: 'Shared Infrastructure'
+    jobs:
+      - job: SharedInfrastructure
+        pool:
+          vmImage: ubuntu-latest
+        steps:
+        - checkout: self
+          submodules: recursive
+        - template: ./PipelineTemplates/deploy-template.yml@tlpbb
+          parameters: 
+            serviceConnection: '$(serviceConnectionName)'
+            subscriptionId: '$(subscriptionId)'
+            resourceGroupName: '$(sharedResourceGroupName)'
+            location: 'westeurope'
+            templateFilePath: './platform/azure/shared-template.bicep'
+            processOutputs: false
+            tags: '@{}'
+            armParameterOverrideString: '-resourceGroupPrefix $(sharedResourceGroupName)'
+
+  - stage: 
+    displayName: 'Environment Infrastructure'
+    jobs:
+      - job: DeployInfrastructure
+        pool:
+          vmImage: ubuntu-latest
+        steps:
+        - checkout: self
+          submodules: recursive
+        - template: ./PipelineTemplates/deploy-template.yml@tlpbb
+          parameters: 
+            serviceConnection: '$(serviceConnectionName)'
+            subscriptionId: '$(subscriptionId)'
+            resourceGroupName: '$(resourceGroupPrefix)-rg'
+            location: 'westeurope'
+            templateFilePath: './platform/azure/template.bicep'
+            processOutputs: false
+            tags: '@{}'
+            armParameterOverrideString: '-resourceGroupPrefix $(resourceGroupPrefix)'
