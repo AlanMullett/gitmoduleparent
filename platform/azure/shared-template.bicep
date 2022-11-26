@@ -10,10 +10,13 @@ var tags = {
 }
 
 var keyVaultName = '${resourceGroupPrefix}-kv-01'
+
 module sharedKeyVault '../../funding-platform-building-blocks/templates/keyvault.json' = {
   name: 'sharedKeyVault'
   params: {
     keyVaultName: keyVaultName
+    enableSoftDelete: true
+    enabledForTemplateDeployment: true
     environmentTag: tags.environmentTag
     parentBusinessTag: tags.parentBusinessTag
     portfolioTag: tags.portfolioTag

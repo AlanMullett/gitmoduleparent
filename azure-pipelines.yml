@@ -29,7 +29,7 @@ stages:
             templateFilePath: './platform/azure/shared-template.bicep'
             processOutputs: false
             tags: '@{}'
-            armParameterOverrideString: '-resourceGroupPrefix $(sharedResourceGroupName)'
+            armParameterOverrideString: '-resourceGroupPrefix $(sharedResourceGroupPrefix)'
 
   - stage: 
     displayName: 'Environment Infrastructure'
