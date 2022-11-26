@@ -28,4 +28,4 @@ jobs:
         templateFilePath: './platform/azure/template.bicep'
         processOutputs: false
         tags: '@{}'
-        armParametersOverrideString: '-resourceGroupPrefix $(resourceGroupPrefix)'
+        armParameterOverrideString: '-resourceGroupPrefix $(resourceGroupPrefix)'
