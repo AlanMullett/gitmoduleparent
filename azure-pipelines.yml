@@ -23,8 +23,9 @@ jobs:
       parameters: 
         serviceConnection: 'Visual Studio Enterprise'
         subscriptionId: 'c6dfe75e-f5b6-4a81-952d-e0f6eadb4558'
-        resourceGroupName: 'pipeline-rg'
+        resourceGroupName: '$(resourceGroupPrefix)-rg'
         location: 'westeurope'
         templateFilePath: './platform/azure/template.bicep'
         processOutputs: false
         tags: '@{}'
+        armParametersOverrideString: '-resourceGroupPrefix $(resourceGroupPrefix)'
