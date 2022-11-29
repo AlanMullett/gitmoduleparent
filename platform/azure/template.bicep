@@ -1,4 +1,6 @@
 param resourceGroupPrefix string 
+param appServicePlanTier string
+param appServicePlanInstances int
 
 var resourceGroupName = '${resourceGroupPrefix}-rg'
 var appServicePlanName = '${resourceGroupPrefix}-asp-01'
@@ -19,8 +21,8 @@ module app_service_plan '../../funding-platform-building-blocks/templates/app-se
     appServicePlanName: appServicePlanName
     aspLocation: 'West Europe'
     aspSize: '1'
-    aspInstances: 2
-    nonASETier: 'PremiumV2'
+    aspInstances: appServicePlanInstances
+    nonASETier: appServicePlanTier
     // environmentTag: tags.environmentTag
     // parentBusinessTag: tags.parentBusinessTag
     // portfolioTag: tags.portfolioTag

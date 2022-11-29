@@ -13,6 +13,7 @@ trigger:
 stages:
   - stage:
     displayName: 'Shared Infrastructure'
+    condition: false
     jobs:
       - job: SharedInfrastructure
         pool:
@@ -49,4 +50,4 @@ stages:
             templateFilePath: './platform/azure/template.bicep'
             processOutputs: false
             tags: '@{}'
-            armParameterOverrideString: '-resourceGroupPrefix $(resourceGroupPrefix)'
+            armParameterOverrideString: '-resourceGroupPrefix $(resourceGroupPrefix) -appServicePlanTier $(appServicePlanTier) -appServicePlanInstances $(appServicePlanInstances)'
