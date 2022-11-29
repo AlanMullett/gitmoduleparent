@@ -1,11 +1,11 @@
-var tags = {
-  environmentTag: ''
-  parentBusinessTag: ''
-  portfolioTag: ''
-  productTag: ''
-  serviceLineTag: ''
-  serviceOfferingTag: ''
-}
+// var tags = {
+//   environmentTag: ''
+//   parentBusinessTag: ''
+//   portfolioTag: ''
+//   productTag: ''
+//   serviceLineTag: ''
+//   serviceOfferingTag: ''
+// }
 
 module app_service_plan '../../funding-platform-building-blocks/templates/app-service-plan.json' = {
   name: 'app-service-plan'
@@ -15,12 +15,12 @@ module app_service_plan '../../funding-platform-building-blocks/templates/app-se
     aspSize: '1'
     aspInstances: 1
     nonASETier: 'Standard'
-    environmentTag: tags.environmentTag
-    parentBusinessTag: tags.parentBusinessTag
-    portfolioTag: tags.portfolioTag
-    productTag: tags.productTag
-    serviceLineTag: tags.serviceLineTag
-    serviceOfferingTag: tags.serviceOfferingTag
+    // environmentTag: tags.environmentTag
+    // parentBusinessTag: tags.parentBusinessTag
+    // portfolioTag: tags.portfolioTag
+    // productTag: tags.productTag
+    // serviceLineTag: tags.serviceLineTag
+    // serviceOfferingTag: tags.serviceOfferingTag
   }
 }
 
@@ -32,12 +32,12 @@ module app_service '../../funding-platform-building-blocks/templates/app-service
     appServicePlanResourceGroup: 'pipeline-rg'
     http20Enabled: true
     ftpsState: 'Disabled'
-    environmentTag: tags.environmentTag
-    parentBusinessTag: tags.parentBusinessTag
-    portfolioTag: tags.portfolioTag
-    productTag: tags.productTag
-    serviceLineTag: tags.serviceLineTag
-    serviceOfferingTag: tags.serviceOfferingTag
+    // environmentTag: tags.environmentTag
+    // parentBusinessTag: tags.parentBusinessTag
+    // portfolioTag: tags.portfolioTag
+    // productTag: tags.productTag
+    // serviceLineTag: tags.serviceLineTag
+    // serviceOfferingTag: tags.serviceOfferingTag
   }
   dependsOn: [
     app_service_plan
@@ -52,12 +52,12 @@ module function_app '../../funding-platform-building-blocks/templates/function-a
     appServicePlanResourceGroup: 'pipeline-rg'
     http20Enabled: true
     ftpsState: 'Disabled'
-    environmentTag: tags.environmentTag
-    parentBusinessTag: tags.parentBusinessTag
-    portfolioTag: tags.portfolioTag
-    productTag: tags.productTag
-    serviceLineTag: tags.serviceLineTag
-    serviceOfferingTag: tags.serviceOfferingTag
+    // environmentTag: tags.environmentTag
+    // parentBusinessTag: tags.parentBusinessTag
+    // portfolioTag: tags.portfolioTag
+    // productTag: tags.productTag
+    // serviceLineTag: tags.serviceLineTag
+    // serviceOfferingTag: tags.serviceOfferingTag
   }
   dependsOn: [
     app_service_plan
