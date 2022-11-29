@@ -19,8 +19,8 @@ module app_service_plan '../../funding-platform-building-blocks/templates/app-se
     appServicePlanName: appServicePlanName
     aspLocation: 'West Europe'
     aspSize: '1'
-    aspInstances: 1
-    nonASETier: 'Standard'
+    aspInstances: 2
+    nonASETier: 'PremiumV2'
     // environmentTag: tags.environmentTag
     // parentBusinessTag: tags.parentBusinessTag
     // portfolioTag: tags.portfolioTag
