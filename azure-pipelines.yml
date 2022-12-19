@@ -5,7 +5,7 @@ resources:
       type: github
       endpoint: SkillsFundingAgency
       name: SkillsFundingAgency/tl-platform-building-blocks
-      ref: feature/single-repo
+      ref: TLD-172
 
 trigger:
 - master
@@ -40,13 +40,16 @@ stages:
         steps:
         - checkout: self
           submodules: recursive
-        - template: ./PipelineTemplates/deploy-template.yml@tlpbb
-          parameters: 
-            serviceConnection: '$(serviceConnectionName)'
+        - task: AzureResourceManagerTemplateDeployment@3
+          inputs:
+            deploymentScope: 'Resource Group'
+            action: 'Create Or Update Resource Group'
+            deploymentMode: Incremental
+            azureResourceManagerConnection: '$(serviceConnectionName)'
             subscriptionId: '$(subscriptionId)'
             resourceGroupName: '$(resourceGroupPrefix)-rg'
             location: 'westeurope'
-            templateFilePath: './platform/azure/template.bicep'
-            processOutputs: false
-            tags: '@{}'
-            armParameterOverrideString: '-resourceGroupPrefix $(resourceGroupPrefix) -appServicePlanTier $(appServicePlanTier) -appServicePlanInstances $(appServicePlanInstances)'
+            templateLocation: 'Linked Artifact'
+            csmFile: './platform/azure/template.bicep'
+            overrideParameters: '-resourceGroupPrefix $(resourceGroupPrefix) -appServicePlanTier $(appServicePlanTier) -appServicePlanInstances $(appServicePlanInstances)'
+            deploymentOutputs: ArmTemplateOuputs
