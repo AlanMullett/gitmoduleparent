@@ -1,13 +1,13 @@
 param sharedResourceGroupPrefix string 
 
-var tags = {
-  environmentTag: '${sharedResourceGroupPrefix}-environment'
-  parentBusinessTag: '${sharedResourceGroupPrefix}-business'
-  portfolioTag: '${sharedResourceGroupPrefix}-portfolio'
-  productTag: '${sharedResourceGroupPrefix}-product'
-  serviceLineTag: '${sharedResourceGroupPrefix}-serviceLine'
-  serviceOfferingTag: '${sharedResourceGroupPrefix}-serviceOffering'
-}
+// var tags = {
+//   environmentTag: '${sharedResourceGroupPrefix}-environment'
+//   parentBusinessTag: '${sharedResourceGroupPrefix}-business'
+//   portfolioTag: '${sharedResourceGroupPrefix}-portfolio'
+//   productTag: '${sharedResourceGroupPrefix}-product'
+//   serviceLineTag: '${sharedResourceGroupPrefix}-serviceLine'
+//   serviceOfferingTag: '${sharedResourceGroupPrefix}-serviceOffering'
+// }
 
 var keyVaultName = '${sharedResourceGroupPrefix}-kv-01'
 

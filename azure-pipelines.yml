@@ -11,25 +11,25 @@ trigger:
 - master
 
 stages:
-  - stage:
-    displayName: 'Shared Infrastructure'
-    jobs:
-      - job: SharedInfrastructure
-        pool:
-          vmImage: ubuntu-latest
-        steps:
-        - checkout: self
-          submodules: recursive
-        - template: ./PipelineTemplates/deploy-template.yml@tlpbb
-          parameters: 
-            serviceConnection: '$(serviceConnectionName)'
-            subscriptionId: '$(subscriptionId)'
-            resourceGroupName: '$(sharedResourceGroupPrefix)-rg'
-            location: 'westeurope'
-            templateFilePath: './platform/azure/shared-template.bicep'
-            processOutputs: false
-            tags: '@{}'
-            armParameterOverrideString: '-sharedResourceGroupPrefix $(sharedResourceGroupPrefix)'
+  # - stage:
+  #   displayName: 'Shared Infrastructure'
+  #   jobs:
+  #     - job: SharedInfrastructure
+  #       pool:
+  #         vmImage: ubuntu-latest
+  #       steps:
+  #       - checkout: self
+  #         submodules: recursive
+  #       - template: ./PipelineTemplates/deploy-template.yml@tlpbb
+  #         parameters: 
+  #           serviceConnection: '$(serviceConnectionName)'
+  #           subscriptionId: '$(subscriptionId)'
+  #           resourceGroupName: '$(sharedResourceGroupPrefix)-rg'
+  #           location: 'westeurope'
+  #           templateFilePath: './platform/azure/shared-template.bicep'
+  #           processOutputs: false
+  #           tags: '@{}'
+  #           armParameterOverrideString: '-sharedResourceGroupPrefix $(sharedResourceGroupPrefix)'
 
   - stage: 
     displayName: 'Environment Infrastructure'
@@ -49,4 +49,4 @@ stages:
             templateFilePath: './platform/azure/template.bicep'
             processOutputs: false
             tags: '@{}'
-            armParameterOverrideString: '-resourceGroupPrefix $(resourceGroupPrefix)'
+            armParameterOverrideString: '-resourceGroupPrefix $(resourceGroupPrefix) -appServicePlanTier $(appServicePlanTier) -appServicePlanInstances $(appServicePlanInstances)'
