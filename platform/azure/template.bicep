@@ -14,7 +14,7 @@ var tags = {
   serviceOfferingTag: '${resourceGroupPrefix}-serviceOffering'
 }
 
-module app_service_plan '../../funding-platform-building-blocks/templates/app-service-plan.json' = {
+module app_service_plan './tl-platform-building-blocks/templates/app-service-plan.json' = {
   name: 'app-service-plan'
   params: {
     appServicePlanName: appServicePlanName
@@ -22,16 +22,10 @@ module app_service_plan '../../funding-platform-building-blocks/templates/app-se
     aspSize: '1'
     aspInstances: 1
     nonASETier: 'Standard'
-    environmentTag: tags.environmentTag
-    parentBusinessTag: tags.parentBusinessTag
-    portfolioTag: tags.portfolioTag
-    productTag: tags.productTag
-    serviceLineTag: tags.serviceLineTag
-    serviceOfferingTag: tags.serviceOfferingTag
   }
 }
 
-module app_service '../../funding-platform-building-blocks/templates/app-service.json' = {
+module app_service './tl-platform-building-blocks/ARMTemplates/app-service.json' = {
   name: 'app-service'
   params: {
     appServiceName: appServiceName
@@ -39,19 +33,13 @@ module app_service '../../funding-platform-building-blocks/templates/app-service
     appServicePlanResourceGroup: resourceGroupName
     http20Enabled: true
     ftpsState: 'Disabled'
-    environmentTag: tags.environmentTag
-    parentBusinessTag: tags.parentBusinessTag
-    portfolioTag: tags.portfolioTag
-    productTag: tags.productTag
-    serviceLineTag: tags.serviceLineTag
-    serviceOfferingTag: tags.serviceOfferingTag
   }
   dependsOn: [
     app_service_plan
   ]
 }
 
-module function_app '../../funding-platform-building-blocks/templates/function-app.json' = {
+module function_app './tl-platform-building-blocks/ARMTemplates/function-app.json' = {
   name: 'function-app'
   params: {
     functionAppName: functionAppName
@@ -59,12 +47,6 @@ module function_app '../../funding-platform-building-blocks/templates/function-a
     appServicePlanResourceGroup: resourceGroupName
     http20Enabled: true
     ftpsState: 'Disabled'
-    environmentTag: tags.environmentTag
-    parentBusinessTag: tags.parentBusinessTag
-    portfolioTag: tags.portfolioTag
-    productTag: tags.productTag
-    serviceLineTag: tags.serviceLineTag
-    serviceOfferingTag: tags.serviceOfferingTag
   }
   dependsOn: [
     app_service_plan
