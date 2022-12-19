@@ -49,7 +49,7 @@ stages:
             subscriptionId: '$(subscriptionId)'
             resourceGroupName: '$(resourceGroupPrefix)-rg'
             location: 'westeurope'
-            templateLocation: 'Linked Artifact'
+            templateLocation: 'Linked artifact'
             csmFile: './platform/azure/template.bicep'
             overrideParameters: '-resourceGroupPrefix $(resourceGroupPrefix) -appServicePlanTier $(appServicePlanTier) -appServicePlanInstances $(appServicePlanInstances)'
             deploymentOutputs: ArmTemplateOuputs
